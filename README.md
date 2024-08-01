@@ -22,10 +22,10 @@ This script automates the installation and setup of a Minecraft Bedrock Edition 
 ## Usage
 
 Run the script with sudo privileges on a Ubuntu or Debian system:
-\```bash
+```
   sudo ./install-bedrock-server.sh
-\```
+```
 The script will handle the entire setup process, and upon completion, your Minecraft Bedrock server will be up and running. You can interact with the server's command-line console using:
-\```bash
+```
   sudo supervisorctl fg bedrock-server
-\```
+```
