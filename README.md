@@ -7,7 +7,7 @@ Welcome to the minecraft-bedrock-tools repository!  This repository is dedicated
 
 This script automates the installation and setup of a Minecraft Bedrock Edition server on a Ubuntu or Debian-based Linux system. It ensures necessary dependencies are installed, downloads the latest server version, configures the server properties, and sets up supervision for automatic management of the server process.
 
-##Features
+## Features
 
 Environment Checks: Ensures the script is run with sudo privileges and checks for a supported operating system (Ubuntu or Debian).
 Port Availability: Verifies that the default ports (19132 for IPv4 and 19133 for IPv6) are not in use by other processes.
@@ -18,7 +18,7 @@ Supervisor Configuration: Sets up a supervisor configuration to manage the Minec
 Firewall Rules: Checks if iptables is installed and configures it to allow UDP traffic on the specified port.
 Verification: Confirms the server is running and listening on the specified port.
 
-##Usage
+## Usage
 
 Run the script with sudo privileges on a Ubuntu or Debian system:
 \```bash
