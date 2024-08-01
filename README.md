@@ -29,3 +29,45 @@ The script will handle the entire setup process, and upon completion, your Minec
 ```
   sudo supervisorctl fg bedrock-server
 ```
+
+# Minecraft Bedrock Server Update Script (update-bedrock-server.sh)
+
+## Important Note
+This script is meant to work with Bedrock installations done using the (install-bedrock-server.sh) script. Any other setups and installations may not be compatible with this update script.
+
+## Description
+
+This script automates the process of updating an existing Minecraft Bedrock Edition server on a Linux system. It searches for existing installations, verifies the version, downloads the latest version if necessary, backs up the current server, and applies the update.
+
+## Features
+
+- **Find Installations: Searches the file system for existing Minecraft Bedrock server installations.
+- **User Selection: Prompts the user to select which installation to update if multiple installations are found.
+- **Version Check: Compares the current server version with the latest available version to determine if an update is needed.
+- **Backup and Update: Backs up the current server directory before applying the update to ensure data integrity.
+- **Supervisor Control: Stops the server using Supervisor before updating and restarts it afterward.
+
+## Usage
+
+Run the script with sudo privileges on a Linux system:
+```
+  sudo ./update-bedrock-server.sh
+```
+The script will guide you through selecting an installation to update and handle the update process if a newer version is available.
+
+## Cleanup
+
+This script does not automatically delete the backup or the latest downloaded zip file. You will need to manage these files manually to ensure your system does not run out of storage space.
+
+## Consideration
+
+If you want to automate the update process, you can add this script to cron and run it periodically. For example, to run the script daily at midnight, add the following line to your crontab file (crontab -e):
+```
+  0 0 * * * /path/to/update-bedrock-server.sh
+```
+Ensure the script has the necessary permissions and is executable:
+
+```
+  chmod +x /path/to/update-bedrock-server.sh
+
+```
