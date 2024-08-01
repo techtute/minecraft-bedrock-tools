@@ -30,6 +30,8 @@ The script will handle the entire setup process, and upon completion, your Minec
   sudo supervisorctl fg bedrock-server
 ```
 
+
+
 # Minecraft Bedrock Server Update Script (update-bedrock-server.sh)
 
 ## Important Note
