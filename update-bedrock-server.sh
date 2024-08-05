@@ -92,7 +92,7 @@ unzip -o $zip_file -d $installation_dir
 echo "Updating Minecraft... "
 cp $installation_dir-$today/server.properties $installation_dir
 cp $installation_dir-$today/allowlist.json $installation_dir
-
+cp $installation_dir-$today/permissions.json $installation_dir
 
 # Start updated server
 sudo supervisorctl reload
