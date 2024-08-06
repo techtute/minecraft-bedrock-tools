@@ -61,7 +61,9 @@ link=$(echo "$source" | grep -o '"https://minecraft\.azureedge\.net/bin-linux/be
 zip_file=$(basename "$link")
 
 # Check the version of the installed Minecraft Bedrock Edition Server.
-output=$(sudo /opt/bedrock-server/bedrock_server 2>&1 &)
+
+cd $installation_dir
+output=$(sudo $installation_dir/bedrock_server 2>&1 &)
 
 version=$(echo "$output" | grep -o 'Version: [0-9.]\+' | awk '{print $2}')
 
