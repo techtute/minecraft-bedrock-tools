@@ -85,7 +85,9 @@ fi
 sudo supervisorctl stop bedrock-server
 
 # Make a backup of current Minecraft home directory.
-cp -R $installation_dir $installation_dir-$today
+read user group <<< $(stat -c '%U %G' "$installation_dir")
+
+cp -a $installation_dir $installation_dir-$today
 echo "Backing up $installation_dir to $installation_dir-$today..."
 
 # Extract latest Minecraft Bedrock Edition Server & Remove Zip File.
@@ -93,9 +95,11 @@ unzip -o /tmp/$zip_file -d $installation_dir
 rm /tmp/$zip_file
 
 echo "Updating Minecraft... "
-cp $installation_dir-$today/server.properties $installation_dir
-cp $installation_dir-$today/allowlist.json $installation_dir
-cp $installation_dir-$today/permissions.json $installation_dir
+cp -a $installation_dir-$today/server.properties $installation_dir
+cp -a $installation_dir-$today/allowlist.json $installation_dir
+cp -a $installation_dir-$today/permissions.json $installation_dir
+
+chown -R $user:$group $installation_dir
 
 # Start updated server
 sudo supervisorctl reload
