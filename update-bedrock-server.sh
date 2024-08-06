@@ -80,7 +80,7 @@ else
     wget $link
 fi
 
-sudo supervisorctl stop minecraft-bedrock
+sudo supervisorctl stop bedrock-server
 
 # Make a backup of current Minecraft home directory.
 cp -R $installation_dir $installation_dir-$today
