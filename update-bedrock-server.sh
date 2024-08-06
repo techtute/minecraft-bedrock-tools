@@ -79,7 +79,7 @@ echo "Minecraft Server is up to date, nothing to do!"
     exit 1
 else
     echo "Downloading $link... "
-    wget $link
+    wget -P /tmp $link
 fi
 
 sudo supervisorctl stop bedrock-server
@@ -88,8 +88,9 @@ sudo supervisorctl stop bedrock-server
 cp -R $installation_dir $installation_dir-$today
 echo "Backing up $installation_dir to $installation_dir-$today..."
 
-# Extract latest Minecraft Bedrock Edition Server.
-unzip -o $zip_file -d $installation_dir
+# Extract latest Minecraft Bedrock Edition Server & Remove Zip File.
+unzip -o /tmp/$zip_file -d $installation_dir
+rm /tmp/$zip_file
 
 echo "Updating Minecraft... "
 cp $installation_dir-$today/server.properties $installation_dir
