@@ -65,7 +65,7 @@ This script does not automatically delete the backup or the latest downloaded zi
 
 If you want to automate the update process, you can add this script to cron and run it periodically. For example, to run the script daily at midnight, add the following line to your crontab file (crontab -e):
 ```
-  0 0 * * * /path/to/update-bedrock-server.sh
+  0 0 * * * /bin/echo "u" | /bin/bash /path/to/update-bedrock-server.sh
 ```
 Ensure the script has the necessary permissions and is executable:
 
