@@ -4,7 +4,9 @@ today=$(date +"%Y-%m-%d")
 
 # Find if Minecraft Bedrock exist on the file system. If multiple installations exsist choose which one to update.
 find_installations() {
-    find / -type f -name "bedrock_server" -execdir test -e server.properties \; -printf "%h\n"
+
+    find / -type d -name "*.bak" -prune -o -type f -name "bedrock_server" -execdir test -e server.properties \; -printf "%h\n"
+
 }
 
 user_selection() {
@@ -87,7 +89,7 @@ sudo supervisorctl stop bedrock-server
 # Make a backup of current Minecraft home directory.
 read user group <<< $(stat -c '%U %G' "$installation_dir")
 
-cp -a $installation_dir $installation_dir-$today
+cp -a $installation_dir $installation_dir-$today.bak
 echo "Backing up $installation_dir to $installation_dir-$today..."
 
 # Extract latest Minecraft Bedrock Edition Server & Remove Zip File.
