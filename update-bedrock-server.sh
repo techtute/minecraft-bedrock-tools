@@ -58,7 +58,7 @@ done
 # Check the latest Minecraft Bedrock Edition Server available.
 source=$(curl -s -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36" https://www.minecraft.net/en-us/download/server/bedrock)
 
-link=$(echo "$source" | grep -o '"https://minecraft\.azureedge\.net/bin-linux/bedrock-server-[^"]*"' | sed 's/"//g')
+link=$(echo "$source" | grep -o '"https://www.minecraft.net/bedrockdedicatedserver/bin-linux/bedrock-server-[^"]*"' | sed 's/"//g') 
 
 zip_file=$(basename "$link")
 
@@ -81,7 +81,7 @@ echo "Minecraft Server is up to date, nothing to do!"
     exit 1
 else
     echo "Downloading $link... "
-    wget -P /tmp $link
+    wget --header="Referer: https://www.minecraft.net/en-us/download/server/bedrock" --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36" -P /tmp "$link"
 fi
 
 sudo supervisorctl stop bedrock-server
