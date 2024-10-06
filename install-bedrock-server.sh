@@ -14,7 +14,7 @@ if [ "$(id -u)" != "0" ]; then
 
 # Check if is Ubuntu or Debian Linux
 elif [ ! -f /etc/os-release ] || ( . /etc/os-release && [ "$ID" != "ubuntu" ] && [ "$ID" != "debian" ]); then
-    echo "This is unsupported OS. Minecraft Bedcrock Edition is only suported on Ubuntu or Debian"
+    echo "This is unsupported OS. Minecraft Bedrock Edition is only suported on Ubuntu or Debian"
     exit 1
 
 # Check if already installed
