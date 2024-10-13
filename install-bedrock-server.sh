@@ -14,7 +14,7 @@ if [ "$(id -u)" != "0" ]; then
 
 # Check if is Ubuntu or Debian Linux
 elif [ ! -f /etc/os-release ] || ( . /etc/os-release && [ "$ID" != "ubuntu" ] && [ "$ID" != "debian" ]); then
-    echo "This is unsupported OS. Minecraft Bedcrock Edition is only suported on Ubuntu or Debian"
+    echo "This is unsupported OS. Minecraft Bedrock Edition is only suported on Ubuntu or Debian"
     exit 1
 
 # Check if already installed
@@ -107,6 +107,7 @@ if ss -nlup | grep -q ":$port"; then
     echo
     echo "Please ensure that UDP port $port is also open in your security list/group."
     echo
-    echo "To interact with Minecraft Server command-line console run: \"sudo supervisorctl fg $server\""else
+    echo "To interact with Minecraft Server command-line console run: \"sudo supervisorctl fg $server\""
+else
     echo "Port $port UDP is not listening. Installation may have failed or the server is not running."
 fi
