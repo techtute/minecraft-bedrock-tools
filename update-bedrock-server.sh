@@ -62,17 +62,22 @@ zip_file=$(basename "$link")
 
 # Check the version of the installed Minecraft Bedrock Edition Server.
 
-cd $installation_dir
-output=$(sudo $installation_dir/bedrock_server 2>&1 &)
+cd "$installation_dir"
 
-version=$(echo "$output" | grep -o 'Version: [0-9.]\+' | awk '{print $2}')
+# Run server for 3 sec and capture the output
+output=$(timeout 3s bash -c "cd '$installation_dir' && ./bedrock_server 2>&1" || true)
+
+version=$(echo "$output" | grep -oP 'Version: \K[0-9.]+')
 
 if [ -z "$version" ]; then
-    echo "Failed to extract version from server output. Exiting."
+    echo "Failed to extract version from server output."
+    echo "Server output was:"
+    echo "$output"
     exit 1
 fi
 
 echo "Minecraft Bedrock server version is: $version"
+
 
 if [[ $zip_file == *$version* ]]; then
 echo "Minecraft Server is up to date, nothing to do!"
